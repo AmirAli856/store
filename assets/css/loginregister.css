@@ -1,0 +1,60 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    direction: rtl;
+}
+:root{
+    --bs-border-color: #e9ecef;
+    --placeholder: #757575;
+    --border-color: #dedcdc;
+}
+body{
+    background-image: url(../../public/images/loginregister-bg.svg);
+    background-repeat: repeat-x;
+    background-size: contain;
+    background-position: bottom;
+    height: var(--body-size);
+}
+.form-control, .form-select{
+    border: 1px solid var(--border-color) !important;
+}
+::placeholder{
+    color: var(--placeholder) !important;
+}
+.form-check-input:checked{
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+}
+.form-check-input:focus{
+    border-color: var(--bs-primary);
+}
+.fs-7{
+    font-size: 14px;
+}
+.socialmedia-box a{
+    transition: all 0.5s;
+    width: 30px;
+    aspect-ratio: 1;
+}
+.socialmedia-box a:hover{
+    background-color: #fff !important;
+    color: var(--bs-primary) !important;
+    transform: translateY(-5px);
+}
+.fs-6-responsive{
+    font-size: clamp(10px, calc(0.65rem + 1vw), 16px);
+}
+.pe-4_5{
+    padding-right: 2rem !important;
+}
+@media (max-width: 991px){
+    .w-lgReverse-75{
+        width: 75% !important;
+    }
+}
+@media (min-width: 992px){
+    .rounded-lg-end-4{
+        border-radius: 0 1rem 1rem 0 !important;
+    }
+}

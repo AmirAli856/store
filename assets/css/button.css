@@ -1,0 +1,45 @@
+:root{
+    --btn-padding-x: 12px;
+    --btn-border-size: 2px;
+}
+
+.btn-fa{
+    color: var(--btn-text-color) !important;
+    font-size: 14px;
+    font-family: var(--font-dana-medium) !important;
+    border-radius: 16px !important;
+    transition: 0.2s;
+    padding-left: var(--btn-padding-x);
+    padding-right: var(--btn-padding-x);
+    height: 40px;
+    max-height: 40px;
+}
+
+.btn-fa-white{
+    background-color: var(--color-50);
+    border: var(--btn-border-size) solid var(--color-250) !important;
+    border-bottom: 4px solid var(--color-250) !important;
+}
+.btn-fa-white:hover{
+    background-color: var(--color-100) !important;
+}
+.btn-fa-white:active{
+    background-color: var(--color-200) !important;
+    border-bottom: var(--btn-border-size) solid var(--color-250) !important;
+    transform: translateY(2px) !important;
+}
+
+.btn-fa-blue{
+    background-color: var(--color-blue);
+    border: var(--btn-border-size)solid var(--color-blue-500) !important;
+    border-bottom: 4px solid var(--color-blue-500) !important;
+}
+.btn-fa-blue:hover{
+    background-color: var(--color-blue-300) !important;
+}
+.btn-fa-blue:active{
+    background-color: var(--color-blue-400) !important;
+    border-bottom: var(--btn-border-size) solid var(--color-blue-500) !important;
+    transform: translateY(2px) !important;
+}
+

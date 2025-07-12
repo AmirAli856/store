@@ -1,0 +1,69 @@
+@font-face {
+    font-family: "Dana-Bold";
+    src: url(../../public/fonts/Dana-Bold.woff2);
+}
+@font-face {
+    font-family: "Dana-DemiBold";
+    src: url(../../public/fonts/Dana-DemiBold.woff2);
+}
+@font-face {
+    font-family: "Dana-Fat";
+    src: url(../../public/fonts/Dana-Fat.woff2);
+}
+@font-face {
+    font-family: "Dana-ExtraBold";
+    src: url(../../public/fonts/Dana-ExtraBold.woff2);
+}
+@font-face {
+    font-family: "Dana-Light";
+    src: url(../../public/fonts/Dana-Light.woff2);
+}
+@font-face {
+    font-family: "Dana-Medium";
+    src: url(../../public/fonts/Dana-Medium.woff2);
+}
+@font-face {
+    font-family: "Dana-Regular";
+    src: url(../../public/fonts/Dana-Regular.woff2);
+}
+@font-face {
+    font-family: "Soofee";
+    src: url(../../public/fonts/Soofee.woff);
+}
+
+:root{
+    --font-dana-bold: "Dana-Bold";
+    --font-dana-demibold: "Dana-DemiBold";
+    --font-dana-fat: "Dana-Fat";
+    --font-dana-extrabold: "Dana-ExtraBold";
+    --font-dana-light: "Dana-Light";
+    --font-dana-medium: "Dana-Medium";
+    --font-dana-regular: "Dana-Regular";
+    --font-soofee: "Soofee";
+}
+
+
+.ff-dana-bold{
+    font-family: var(--font-dana-bold) !important;
+}
+.ff-dana-demibold{
+    font-family: var(--font-dana-demibold) !important;
+}
+.ff-dana-fat{
+    font-family: var(--font-dana-fat) !important;
+}
+.ff-dana-extrabold{
+    font-family: var(--font-dana-extrabold) !important;
+}
+.ff-dana-light{
+    font-family: var(--font-dana-light) !important;
+}
+.ff-dana-medium{
+    font-family: var(--font-dana-medium) !important;
+}
+.ff-dana-regular{
+    font-family: var(--font-dana-regular) !important;
+}
+.ff-soofee{
+    font-family: var(--font-soofee) !important;
+}

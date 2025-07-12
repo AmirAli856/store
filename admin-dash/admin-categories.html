@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>پنل مدیریت</title>
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/vendor/datatables/css/dataTables.dataTables.min.css">
+  <link rel="stylesheet" href="assets/css/font.css">
+  <link rel="stylesheet" href="assets/css/colors.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/button.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar p-3 border-end">
+        <div class="text-center mb-4">
+          <h5 class="mt-2 ff-dana-bold text-blue-400">پنل مدیریت</h5>
+        </div>
+        <ul class="nav flex-column ff-dana-medium">
+          <li class="nav-item mb-2">
+            <a class="nav-link" href="admin-products.html" data-target="products" onclick="showContent('products')">
+              <i class="bi bi-box-seam fs-5 me-2"></i> مدیریت محصولات
+            </a>
+          </li>
+          <li class="nav-item mb-2">
+            <a class="nav-link" href="admin-users.html" data-target="users" onclick="showContent('users')">
+              <i class="bi bi-people fs-5 me-2"></i> مدیریت کاربران
+            </a>
+          </li>
+          <li class="nav-item mb-2">
+            <a class="nav-link" href="admin-comments.html" data-target="comments" onclick="showContent('comments')">
+              <i class="bi bi-chat-dots fs-5 me-2"></i> مدیریت نظرات
+            </a>
+          </li>
+          <li class="nav-item mb-2">
+            <a class="nav-link d-flex active" data-target="categories" onclick="showContent('categories')">
+              <i class="bi bi-tags fs-5 me-2"></i> مدیریت دسته‌بندی‌ها
+              <button type="button" class="btn badge d-flex justify-content-center align-items-center me-auto" data-bs-toggle="modal" data-bs-target="#addCategory"><i class="bi bi-plus m-0 fs-5"></i></button>
+            </a>
+          </li>
+          <li class="nav-item mb-2">
+            <a class="nav-link" href="admin-faq.html" data-target="faq" onclick="showContent('faq')">
+              <i class="bi bi-question-circle fs-5 me-2"></i> مدیریت سوالات متداول
+            </a>
+          </li>
+          <li class="nav-item mb-2">
+            <a class="nav-link" href="admin-orders.html" data-target="orders" onclick="showContent('orders')">
+              <i class="bi bi-basket fs-5 me-2"></i> لیست خرید
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <main class="col-md-9 col-lg-10 px-md-4 ms-sm-auto">
+        <div id="dashboard" class="content-section active d-flex align-items-center justify-content-center">
+          <h2 class="ff-dana-bold text-blue-400 ms-auto">داشبورد مدیریت </h2>
+          <p class="ff-dana-bold my-auto">مهدی قاسمی</p>
+          <div class="position-relative">
+            <img src="public/images/User-Profile-PNG-Image.png" alt="Profile" class="img-fluid profile-img"
+              style="width: 55px; cursor: pointer;" onclick="toggleProfileDropdown()">
+
+            <div id="profileDropdown" class="dropdown-box shadow-sm rounded-3 ff-dana-medium">
+              <a href="#" class="dropdown-item text-danger">خروج</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="content">
+          <div id="categories" class="content-section d-block">
+            <div class="row">
+              <div class="table-responsive ff-dana-medium">
+                <table id="categoriesTable" class="display table">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>نام دسته بندی</th>
+                      <th>عکس دسته بندی</th>
+                      <th>وضعیت</th>
+                      <th>فعالیت</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>موبایل</td>
+                      <td><button class="btn btn-fa btn-fa-white" data-bs-toggle="modal"
+                          data-bs-target="#categoryImage">نمایش عکس</button></td>
+                      <td class=""><span class="badge bg-success">فعال</span> <span class="badge bg-danger">غیر
+                          فعال</span></td>
+                      <td>
+                        <button class="btn btn-fa btn-fa-white" data-bs-toggle="modal"
+                          data-bs-target="#categoryItemEdit">ویرایش</button>
+                        <button class="btn btn-fa btn-fa-blue">حذف</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+
+  <!-- Modal -->
+  <!-- Categories add -->
+  <div class="modal fade" id="addCategory" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header d-flex justify-content-between">
+          <span class="modal-title h-5">اضافه دسته بندی</span>
+          <button type="button" class="btn-close m-0" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="categoryName" class="form-label">نام دسته بندی</label>
+              <input type="text" class="form-control" id="categoryName">
+            </div>
+            <div class="mb-3">
+              <label for="categoryImageInput" class="form-label">انتخاب عکس دسته بندی</label>
+              <input class="form-control" type="file" id="categoryImageInput">
+            </div>
+            <div class="mb-3">
+              <label for="categoryStatus" class="form-label">وضعیت</label>
+              <select id="categoryStatus" class="form-select">
+                <option value="enable">فعال</option>
+                <option value="disable">غیر فعال</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-fa btn-fa-blue w-100">ثبت دسته‌بندی‌</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- category edit -->
+  <div class="modal fade" id="categoryItemEdit" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header d-flex justify-content-between">
+          <span class="modal-title h-5">ویرایش دسته بندی</span>
+          <button type="button" class="btn-close m-0" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="categoryName" class="form-label">نام دسته بندی</label>
+              <input type="text" class="form-control" id="categoryName">
+            </div>
+            <div class="mb-3">
+              <label for="categoryImageInput" class="form-label">انتخاب عکس دسته بندی</label>
+              <input class="form-control" type="file" id="categoryImageInput">
+            </div>
+            <div class="mb-3">
+              <label for="categoryStatus" class="form-label">وضعیت</label>
+              <select id="categoryStatus" class="form-select">
+                <option value="enable">فعال</option>
+                <option value="disable">غیر فعال</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-fa btn-fa-blue w-100">ثبت تغییرات</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Category image -->
+  <div class="modal fade" id="categoryImage" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header d-flex justify-content-between">
+          <span class="modal-title h-5">موبایل</span>
+        </div>
+        <div class="modal-body">
+          <img src="public/images/User-Profile-PNG-Image.png" alt="موبایل" class="img-fluid rounded-3">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-fa btn-fa-white w-100" data-bs-dismiss="modal">بستن</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Alert -->
+  <div id="welcome-alert"
+    class="alert alert-info text-center position-fixed top-0 start-50 translate-middle-x w-50 ff-dana-bold" role="alert"
+    style="display: none; z-index: 1050;">
+    👋 به پنل مدیریت خود خوش آمدید !
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.1/xlsx.full.min.js"></script>
+  <script src="assets/vendor/jQuery/js/jquery-3.7.1.min.js"></script>
+  <script src="assets/vendor/datatables/js/dataTables.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="assets/js/script.js"></script>
+  <script src="assets/js/chrat.js"></script>
+</body>
+
+</html>
